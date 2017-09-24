@@ -1,0 +1,5 @@
+/spec/fixtures/
+/uploads
+/config
+/db/*.db
+.git

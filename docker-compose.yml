@@ -1,0 +1,18 @@
+version: '2'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3.6.12-alpine
+
+  snapshots:
+    image: bovoid/snapshots:latest
+    env:
+      storage_path: '/uploads'
+      bus_path: 'amqp://rabbitmq'
+      storage_path: 'sqlite://db/snapshots.db'
+    volumes:
+      - ./uploads:/uploads
+    ports:
+      - '4243:4242'
+    links:
+      - rabbitmq
